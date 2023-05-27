@@ -1,0 +1,136 @@
+/* color */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: olivedrab;
+  --secondary-color: white;
+}
+
+main {
+  /* width: 50vw; */
+  min-height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  /* temporary */
+  color: var(--primary-color);
+  background-color: beige;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+.contact-header {
+  padding: 1rem 0;
+}
+
+.contact-section {
+  margin-top: 2rem;
+}
+
+.search-bar {
+  padding: 1rem 0;
+}
+
+.input-search {
+  font-size: 1rem;
+}
+
+.btn-search {
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+.contact-unit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  text-align: left;
+}
+
+.contact-name,
+.contact-phone,
+.contact-address {
+  display: inline-block;
+}
+
+/* Absolute positioned */
+.btn-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4rem;
+}
+
+.btn-add {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: whitesmoke;
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.popup-section {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(100, 100, 100, 0.9); /* gainsboro */
+  overflow: hidden;
+}
+
+.popup-form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  height: 60vh;
+  background-color: beige;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.popup-info-piece {
+  text-align: left;
+}
+
+.input-info {
+  padding: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+  border: none;
+}
+
+.btn-add-popup {
+  padding: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  color: var(--primary-color);
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}

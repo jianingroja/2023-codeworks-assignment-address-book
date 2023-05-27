@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>My Contacts</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="contact-header">MY CONTACTS</h1>
+      </header>
+      <div class="contact-section">
+        <div class="search-bar">
+          <input class="input-search" type="text" />
+          <button class="btn-search">Search</button>
+        </div>
+        <div class="contact-list">
+          <div class="contact-unit">
+            <div>
+              <div>
+                <h3 class="contact-name">Jianing</h3>
+                <h3 class="contact-name">Wang</h3>
+              </div>
+              <div>
+                <p class="contact-phone">647383161</p>
+                <p class="contact-address">Carrer de Manso, 66</p>
+              </div>
+            </div>
+            <button>Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Absolute positioned -->
+      <div class="btn-section">
+        <button class="btn-add">Add Contact</button>
+      </div>
+      <!-- Absolute positioned -->
+
+      <div class="popup-section">
+        <div class="popup-form-container">
+          <form class="popup-form" action="">
+            <div class="popup-info-piece">
+              <p>First Name</p>
+              <input class="input-info" type="text" placeholder="" />
+            </div>
+            <div class="popup-info-piece">
+              <p>Last Name</p>
+              <input class="input-info" type="text" placeholder="" />
+            </div>
+            <div class="popup-info-piece">
+              <p>Phone</p>
+              <input class="input-info" type="text" placeholder="" />
+            </div>
+            <div class="popup-info-piece">
+              <p>Address</p>
+              <input class="input-info" type="text" placeholder="" />
+            </div>
+            <button type="submit" class="btn-add-popup">Add</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="index.js"></script>
+</html>
