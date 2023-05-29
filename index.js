@@ -20,30 +20,7 @@ const getData = obj => {
   return obj.val();
 };
 
-const clearFormData = obj => {
-  obj.val('');
-  return;
-};
-
-const generateContact = (obj, index) => {
-  const contactHtml = `<div class="contact-unit" id="${index}">
-              <div>
-                <div>
-                  <h3 class="contact-name">${obj.firstName}</h3>
-                  <h3 class="contact-name">${obj.lastName}</h3>
-                </div>
-                <div>
-                  <p class="contact-phone">${obj.phone}</p>
-                  <p class="contact-address">${obj.address}</p>
-                </div>
-              </div>
-              <button class="btn-delete" id="${index}">Delete</button>
-            </div>`;
-
-  return contactHtml;
-};
-
-const generateContact1 = index => {
+const generateContact = index => {
   const obj = contactData[index];
 
   const contactHtml = `<div class="contact-unit" id="${index}">
@@ -67,7 +44,7 @@ const displayContact = obj => {
   const index = contactData.indexOf(obj);
 
   // generate
-  const html = generateContact1(index);
+  const html = generateContact(index);
 
   // append
   $('.contact-list').append(html);
@@ -76,6 +53,26 @@ const displayContact = obj => {
 // for search, delete
 const displayContacts = arr => {
   arr.forEach(displayContact);
+};
+
+const contactList = $('.contact-list');
+
+const firstNameInput = $('input[name="firstname"]');
+const lastNameInput = $('input[name="lastname"]');
+const phoneInput = $('input[name="phone"]');
+const addressInput = $('input[name="address"]');
+const searchInput = $('input[name="search"]');
+
+const clearInput = type => {
+  if (type === 'form') {
+    firstNameInput.val('');
+    lastNameInput.val('');
+    phoneInput.val('');
+    addressInput.val('');
+    console.log('form');
+  } else if (type === 'search') {
+    searchInput.val('');
+  }
 };
 
 const handleSubmit = e => {
@@ -103,15 +100,10 @@ const handleSubmit = e => {
   // );
 
   $('.contact-list').empty();
-  $('input[name=search]').val('');
+  clearInput('search');
   displayContacts(contactData);
 
-  //   clearFormData(firstName);
-  $('input[name="firstname"]').val('');
-  $('input[name="lastname"]').val('');
-  $('input[name="phone"]').val('');
-  $('input[name="address"]').val('');
-  //   todo: extract clear data function
+  clearInput('form');
 };
 
 form.on('submit', handleSubmit);
@@ -120,7 +112,7 @@ form.on('submit', handleSubmit);
 const header = $('.contact-header');
 header.on('click', () => {
   $('.contact-list').empty();
-  $('input[name=search]').val('');
+  clearInput('search');
   displayContacts(contactData);
 });
 
@@ -165,13 +157,13 @@ const handleSearch = () => {
     const notFound = `<p>You don't have this person's contact yet.</p>`;
     console.log('not found');
     $('.contact-list').append(notFound);
-    $('input[name=search]').val('');
+    clearInput('search');
     // return notFound;
     return;
   }
 
   $('.contact-list').empty();
-  $('input[name=search]').val('');
+  clearInput('search');
   // take in an arr; if there are same names
   displayContacts(searchResult);
 };
