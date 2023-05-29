@@ -139,7 +139,18 @@ const handleSearch = () => {
 
   let searchResult = contactData.filter(contact => {
     const contactValues = Object.values(contact);
-    return contactValues.includes(searchContent);
+
+    let hasMatch = false;
+    const reg = new RegExp(`${searchContent}+`, 'gi');
+
+    contactValues.forEach(str => {
+      let regResult = str.match(reg);
+      if (regResult) {
+        hasMatch = true;
+      }
+    });
+
+    return hasMatch;
   });
 
   displayContacts(searchResult, 'search');
