@@ -147,3 +147,5 @@ const handleSearch = () => {
 };
 
 searchBtn.on('click', handleSearch);
+
+$(document).on('load', displayContacts(contactData));
