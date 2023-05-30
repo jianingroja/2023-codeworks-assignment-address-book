@@ -27,7 +27,7 @@ const generateContact = index => {
                   <p class="contact-address">${contact.address}</p>
                 </div>
               </div>
-              <button class="btn-delete" id="${index}">Delete</button>
+              <button class="btn-delete" id="${index}">DELETE</button>
             </div>`;
 
   return contactHtml;
@@ -52,10 +52,10 @@ const displayContacts = (contactArr, scene = '') => {
 
     switch (scene) {
       case 'search':
-        noContact = `<p>You don't have this person's contact.</p>`;
+        noContact = `<p class="no-contact">You don't have this person's contact.</p>`;
         break;
       default:
-        noContact = `<p>You don't have contact yet.</p>`;
+        noContact = `<p class="no-contact">You don't have contact yet.</p>`;
         break;
     }
 
