@@ -1,9 +1,9 @@
 const contactData = [];
 
 // click add button, show form
-const AddBtn = $('.btn-section');
+const openFormBtn = $('.btn-section');
 const popupForm = $('.popup-section');
-AddBtn.on('click', () => popupForm.show());
+openFormBtn.on('click', () => popupForm.show());
 
 // close form
 const closeFormBtn = $('.btn-close-form');
@@ -48,7 +48,7 @@ const displayContact = contact => {
 
 const displayContacts = (contactArr, scene = '') => {
   if (!contactArr.length) {
-    let noContact;
+    let noContact = '';
 
     switch (scene) {
       case 'search':
@@ -86,6 +86,10 @@ const clearInput = type => {
   }
 };
 
+const isEmpty = str => {
+  return !str.trim();
+};
+
 const handleSubmit = e => {
   e.preventDefault();
 
@@ -95,9 +99,17 @@ const handleSubmit = e => {
   const address = addressInput.val();
 
   //   todo: validate
+  if (
+    isEmpty(firstName) ||
+    isEmpty(lastName) ||
+    isEmpty(phone) ||
+    isEmpty(address)
+  ) {
+    alert('Please enter all the information!');
+    return;
+  }
 
   const formData = { firstName, lastName, phone, address };
-
   contactData.push(formData);
 
   popupForm.hide();
@@ -126,9 +138,13 @@ const handleDelete = e => {
 
   // delete from data base
   contactData.splice(index, 1);
+
+  // if all contacts have been deleted, show 'no contact'
+  if (!contactData.length) {
+    displayContacts(contactData);
+  }
 };
 
-// todo, how to add event listeners to all delete button?
 $(document).on('click', '.btn-delete', handleDelete);
 
 // search feature
@@ -159,4 +175,5 @@ const handleSearch = () => {
 
 searchBtn.on('click', handleSearch);
 
+// display default contact, if there is any
 $(document).on('load', displayContacts(contactData));
